@@ -4,32 +4,39 @@ export interface IngredientType {
   bitterness: number;
   acidity: number;
   poisonous: boolean;
+  color: string;
 }
 
-interface Flower extends IngredientType { 
-  
+interface Flower extends IngredientType {
 }
 
-interface Herb extends IngredientType { }
+interface Herb extends IngredientType {
+}
 
 interface Mushroom extends IngredientType {
   umami: number;
 }
 
 export const flowers: Flower[] = [
-  { name: "rose", sweetness: 5, bitterness: 5, acidity: 1, poisonous: false },
-  { name: "camomile", sweetness: 5, bitterness: 5, acidity: 1, poisonous: false },
-  { name: "pansy", sweetness: 5, bitterness: 5, acidity: 1, poisonous: false }
+  { name: "rose", sweetness: 5, bitterness: 5, acidity: 1, poisonous: false, color: "red" },
+  { name: "camomile", sweetness: 5, bitterness: 5, acidity: 1, poisonous: false, color: "yellow" },
+  { name: "pansy", sweetness: 5, bitterness: 5, acidity: 1, poisonous: false, color: "purple" }
 ]
+
+const defaultHerb: Omit<Herb, "name" | "bitterness" > = { sweetness: 5,  acidity: 1, poisonous: false, color: "green" }
 
 export const herbs: Herb[] = [
-  { name: "mint", sweetness: 5, bitterness: 5, acidity: 1, poisonous: false },
-  { name: "rosemary", sweetness: 5, bitterness: 5, acidity: 1, poisonous: false },
-  { name: "thyme", sweetness: 5, bitterness: 5, acidity: 1, poisonous: false }
+  { ...defaultHerb, name: "basil", bitterness: 2 },
+  { ...defaultHerb, name: "parsley", bitterness: 4 },
+  { ...defaultHerb, name: "thyme", bitterness: 5 }
 ]
 
+const defaultMushroom: Omit<Mushroom, "name"> = {
+  sweetness: 5, bitterness: 5, acidity: 1, poisonous: false, color: "brown", umami: 5
+}
+
 export const mushrooms: Mushroom[] = [
-  { name: "chanterelle", sweetness: 5, bitterness: 5, acidity: 1, poisonous: false, umami: 5 },
-  { name: "porcini", sweetness: 5, bitterness: 5, acidity: 1, poisonous: false, umami: 5 },
-  { name: "morel", sweetness: 5, bitterness: 5, acidity: 1, poisonous: false, umami: 5 }
+  { name: "chanterelle", ...defaultMushroom },
+  { name: "porcini", ...defaultMushroom },
+  { name: "morel", ...defaultMushroom }
 ]
