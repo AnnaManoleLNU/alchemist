@@ -1,4 +1,4 @@
-interface Ingredient {
+export interface IngredientType {
   name: string;
   sweetness: number;
   bitterness: number;
@@ -6,11 +6,13 @@ interface Ingredient {
   poisonous: boolean;
 }
 
-interface Flower extends Ingredient { }
+interface Flower extends IngredientType { 
+  
+}
 
-interface Herb extends Ingredient { }
+interface Herb extends IngredientType { }
 
-interface Mushroom extends Ingredient {
+interface Mushroom extends IngredientType {
   umami: number;
 }
 

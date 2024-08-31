@@ -1,23 +1,19 @@
-import { flowers, herbs, mushrooms } from "../data";
+import { IngredientType } from "../data";
 import Ingredient from "./Ingredient";
 
-export default function IngredientList() {
+type IngredientListProps = {
+  ingredientType: IngredientType[];
+};
+
+export default function IngredientList({
+  ingredientType,
+}: IngredientListProps) {
   return (
-    <div >
+    <div>
       <div className="space-x-4 mb-3">
-        {flowers.map((flower, index) => (
-          <Ingredient key={index} name={flower.name}></Ingredient>
+        {ingredientType.map((ingredient: IngredientType, index: number) => (
+          <Ingredient key={index} name={ingredient.name}></Ingredient>
         ))}
-      </div>
-
-      <div className="space-x-4 mb-3">
-        {mushrooms.map((mushroom, index) => (
-          <Ingredient key={index} name={mushroom.name}></Ingredient>
-        ))}
-      </div>
-
-      <div className="space-x-4 mb-3">
-        {herbs.map((herb, index) => (<Ingredient key={index} name={herb.name}></Ingredient>))}
       </div>
     </div>
   );
